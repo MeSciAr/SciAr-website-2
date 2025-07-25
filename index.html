@@ -24,8 +24,10 @@
     .tab.active, .tab:hover { background:var(--brown); color:var(--tan);}
     .tab-content { display:none;}
     .tab-content.active { display:block;}
-    .courses-list { margin-top: 1em; padding-left: 0;}
+    .courses-list { margin-top: 1em; padding-left: 0; list-style-type:none;}
     .courses-list li { margin-bottom:0.65em;}
+    .courses-list a {color: #4b2e05; text-decoration: underline;}
+    .courses-list a:hover {color: #734a1c;}
     .resource-spotlight, .faq { background:#f3e3c6; margin-bottom:1.2em; border-radius:8px; padding:0.7em;}
     .quiz-block { background:#e4d2cd; margin:1em 0 0.6em 0; border-radius:8px; padding:0.8em;}
     .quiz-block input[type=radio]{margin-right:0.6em;}
@@ -36,8 +38,84 @@
     .contact-icons a { display:inline-block; margin:.4em .9em .4em 0; text-decoration:none; color:#452904;}
     .gallery img { width:95%; border-radius:7px; margin: 0.5em 0;}
     footer { text-align:center; color:#7f5a1b; font-size:0.95em; margin:1.7em 0 0 0;}
-    @media (max-width:600px){section{padding:.8em .4em;}}
-    ::selection{background:#e3d2b6;color:var(--brown);}
+    form label { display:block; margin-top:0.8em; font-weight:600; color: var(--brown);}
+    form input[type="text"],
+    form input[type="email"],
+    form select,
+    form textarea {
+      width: 100%;
+      padding: 0.5em;
+      margin-top: 0.2em;
+      border: 1.5px solid #ccc;
+      border-radius: 6px;
+      font-family: 'Libre Baskerville', serif;
+      font-size: 1em;
+      resize: vertical;
+      box-sizing: border-box;
+    }
+    form button {
+      margin-top: 1em;
+      background: var(--brown);
+      color: var(--tan);
+      border: none;
+      padding: 0.6em 1.4em;
+      font-weight: 700;
+      border-radius: 8px;
+      cursor: pointer;
+      font-size: 1.05em;
+      transition: background-color 0.3s ease;
+    }
+    form button:hover {
+      background: #734a1c;
+    }
+    /* Collapsible style for materials */
+    .collapsible {
+      background-color: #deb887;
+      color: #4b2e05;
+      cursor: pointer;
+      padding: 0.8em 1em;
+      width: 100%;
+      border: none;
+      text-align: left;
+      outline: none;
+      font-size: 1.1em;
+      border-radius: 6px;
+      margin: 1em 0 0.3em 0;
+      transition: background-color 0.3s ease;
+    }
+    .collapsible:hover,
+    .collapsible.active {
+      background-color: #734a1c;
+      color: #f5ecd9;
+    }
+    .content {
+      background-color: #f8ead9;
+      overflow: hidden;
+      max-height: 0;
+      transition: max-height 0.3s ease;
+      padding: 0 1em;
+      border-radius: 0 0 6px 6px;
+    }
+    .content p,
+    .content ul {
+      margin: 0.8em 0;
+      color: #56380c;
+    }
+    .content ul li {
+      margin: 0.4em 0;
+    }
+    .content a {
+      color: #4b2e05;
+      text-decoration: underline;
+    }
+    .content a:hover {
+      color: #734a1c;
+    }
+    @media (max-width:600px){
+      section{padding:.8em .4em;}
+      .tabs {flex-direction: column;}
+      .tab {margin: 0.3em 0;}
+    }
   </style>
 </head>
 <body>
@@ -49,35 +127,42 @@
       <a href="#about">About</a>
       <a href="#services">Services</a>
       <a href="#courses">Courses</a>
+      <a href="#tuitions">Tuitions</a>
+      <a href="#tuitions-materials">Materials</a>
+      <a href="#friends-connect">Friends</a>
       <a href="#faq">FAQ</a>
       <a href="#resources">Resources</a>
       <a href="#gallery">Gallery</a>
       <a href="#contact">Contact</a>
     </nav>
   </header>
+
   <section class="hero animated">
     <h2>Where Science Becomes Art</h2>
-    <div class="quote-rotator" id="quote">"Art and science have their meeting point in method." – Edward G. Bulwer-Lytton</div>
+    <div class="quote-rotator" id="quote">
+      "Art and science have their meeting point in method." – Edward G. Bulwer-Lytton
+    </div>
     <p>Welcome to <b>SciAr</b>—the consultancy where science and creativity merge. Discover research, resources, mentorship, and educational innovation at the boundary of knowledge and imagination.</p>
-    <div class="fact-box" id="fact">Did you know? The Fibonacci sequence appears in both mathematics and the arrangement of sunflower seeds.</div>
-    <button class="cta-btn"
-      onclick="alert('Thank you for your interest! Our team will contact you shortly.')">Join Our Network
-    </button>
+    <div class="fact-box" id="fact">
+      Did you know? The Fibonacci sequence appears in both mathematics and the arrangement of sunflower seeds.
+    </div>
+    <button class="cta-btn" onclick="alert('Thank you for your interest! Our team will contact you shortly.')">Join Our Network</button>
   </section>
+
   <section id="about">
     <h2>About SciAr</h2>
     <p>SciAr Academic Consultancy specializes in interdisciplinary academic support, blending the rigor of science with the vision of art. We empower students, researchers, and educators to approach science as creative expression, offering mentorship, resources, and transformative learning experiences.</p>
     <div>
       <h3>Your Consultant</h3>
-      <p><b>Name:</b> [Chrisbaron Chali/Gift Nduwa Ukevwe]<br>
-         <b>Background:</b> [young scientist dedicated to revolutionary science for Africa and a knowledge based economy.]
-      </p>
+      <p><b>Name:</b> Chrisbaron Chali / Gift Nduwa Ukevwe<br>
+         <b>Background:</b> Young scientist dedicated to revolutionary science for Africa and a knowledge-based economy.</p>
     </div>
     <div>
       <span class="counter" id="counter1">Scientists reached: 0</span>
       <span class="counter" id="counter2">Workshops delivered: 0</span>
     </div>
   </section>
+
   <section id="services">
     <h2>Our Services</h2>
     <ul class="services-list">
@@ -93,9 +178,9 @@
       <a target="_blank" rel="noopener" href="https://www.khanacademy.org/partner-content/pixar/science">Pixar in a Box: The Science of Art</a> – A creative blend of storytelling, animation, and scientific thinking.
     </div>
   </section>
+
   <section id="courses">
     <h2>Our Courses</h2>
-    <!-- Tab navigation for courses -->
     <div class="tabs">
       <button class="tab active" onclick="openTab(event, 'bio')">Biology</button>
       <button class="tab" onclick="openTab(event, 'chem')">Chemistry</button>
@@ -106,164 +191,232 @@
     </div>
     <div class="tab-content active" id="bio">
       <ul class="courses-list">
-        <li><a href="https://www.khanacademy.org/science/biology" target="_blank">Khan Academy Biology</a></li>
-        <li><a href="https://www.coursera.org/learn/introbiology" target="_blank">Introduction to Biology – Coursera</a></li>
-        <li><a href="https://www.edx.org/course/introduction-biology-mitx-7-00x" target="_blank">MITx Intro Biology – edX</a></li>
+        <li><a href="https://www.khanacademy.org/science/biology" target="_blank" rel="noopener">Khan Academy Biology</a></li>
+        <li><a href="https://www.coursera.org/learn/introbiology" target="_blank" rel="noopener">Introduction to Biology – Coursera</a></li>
+        <li><a href="https://www.edx.org/course/introduction-biology-mitx-7-00x" target="_blank" rel="noopener">MITx Intro Biology – edX</a></li>
       </ul>
     </div>
     <div class="tab-content" id="chem">
       <ul class="courses-list">
-        <li><a href="https://ocw.mit.edu/courses/chemistry/" target="_blank">MIT OCW Chemistry</a></li>
-        <li><a href="https://www.khanacademy.org/science/chemistry" target="_blank">Khan Academy Chemistry</a></li>
-        <li><a href="https://www.edx.org/course/introduction-chemistry-harvardx-chem101x" target="_blank">HarvardX – Intro to Chemistry</a></li>
+        <li><a href="https://ocw.mit.edu/courses/chemistry/" target="_blank" rel="noopener">MIT OCW Chemistry</a></li>
+        <li><a href="https://www.khanacademy.org/science/chemistry" target="_blank" rel="noopener">Khan Academy Chemistry</a></li>
+        <li><a href="https://www.edx.org/course/introduction-chemistry-harvardx-chem101x" target="_blank" rel="noopener">HarvardX – Intro to Chemistry</a></li>
       </ul>
     </div>
     <div class="tab-content" id="phys">
       <ul class="courses-list">
-        <li><a href="https://ocw.mit.edu/courses/physics/" target="_blank">MIT OCW Physics</a></li>
-        <li><a href="https://www.khanacademy.org/science/physics" target="_blank">Khan Academy Physics</a></li>
-        <li><a href="https://www.edx.org/learn/physics" target="_blank">edX Physics Courses</a></li>
+        <li><a href="https://ocw.mit.edu/courses/physics/" target="_blank" rel="noopener">MIT OCW Physics</a></li>
+        <li><a href="https://www.khanacademy.org/science/physics" target="_blank" rel="noopener">Khan Academy Physics</a></li>
+        <li><a href="https://www.edx.org/learn/physics" target="_blank" rel="noopener">edX Physics Courses</a></li>
       </ul>
     </div>
     <div class="tab-content" id="math">
       <ul class="courses-list">
-        <li><a href="https://www.khanacademy.org/math" target="_blank">Khan Academy Math</a></li>
-        <li><a href="https://ocw.mit.edu/courses/mathematics/" target="_blank">MIT OCW Mathematics</a></li>
-        <li><a href="https://www.edx.org/learn/mathematics" target="_blank">edX Math Courses</a></li>
+        <li><a href="https://www.khanacademy.org/math" target="_blank" rel="noopener">Khan Academy Math</a></li>
+        <li><a href="https://ocw.mit.edu/courses/mathematics/" target="_blank" rel="noopener">MIT OCW Mathematics</a></li>
+        <li><a href="https://www.edx.org/learn/mathematics" target="_blank" rel="noopener">edX Math Courses</a></li>
       </ul>
     </div>
     <div class="tab-content" id="cs">
       <ul class="courses-list">
-        <li><a href="https://www.khanacademy.org/science/computer-science" target="_blank">Khan Academy Computer Science</a></li>
-        <li><a href="https://ocw.mit.edu/courses/electrical-engineering-and-computer-science/" target="_blank">MIT OCW EECS</a></li>
-        <li><a href="https://www.edx.org/course/cs50s-introduction-to-computer-science" target="_blank">Harvard CS50 (edX)</a></li>
+        <li><a href="https://www.khanacademy.org/science/computer-science" target="_blank" rel="noopener">Khan Academy Computer Science</a></li>
+        <li><a href="https://ocw.mit.edu/courses/electrical-engineering-and-computer-science/" target="_blank" rel="noopener">MIT OCW EECS</a></li>
+        <li><a href="https://cs50.harvard.edu/x/2023/" target="_blank" rel="noopener">Harvard CS50 (edX)</a></li>
       </ul>
     </div>
     <div class="tab-content" id="earth">
       <ul class="courses-list">
-        <li><a href="https://www.khanacademy.org/science/earth-and-space-science" target="_blank">Khan Academy Earth & Space</a></li>
-        <li><a href="https://ocw.mit.edu/courses/earth-atmospheric-and-planetary-sciences/" target="_blank">MIT OCW Earth & Planetary Sciences</a></li>
-        <li><a href="https://www.edx.org/learn/geology" target="_blank">edX Geology</a></li>
+        <li><a href="https://www.khanacademy.org/science/earth-and-space-science" target="_blank" rel="noopener">Khan Academy Earth & Space</a></li>
+        <li><a href="https://ocw.mit.edu/courses/earth-atmospheric-and-planetary-sciences/" target="_blank" rel="noopener">MIT OCW Earth & Planetary Sciences</a></li>
+        <li><a href="https://www.edx.org/learn/geology" target="_blank" rel="noopener">edX Geology</a></li>
       </ul>
     </div>
-    <!-- Newsletter signup -->
-    <form class="newsletter" method="POST" action="https://formspree.io/f/mfb6066">
+
+    <form class="newsletter" method="POST" action="https://formspree.io/f/mfb6066" style="margin-top:1.5em;">
       <label for="newsletter-email">Sign up for course updates:</label>
       <input type="email" id="newsletter-email" name="email" placeholder="Your email" required />
       <button type="submit">Subscribe</button>
     </form>
-    <div class="quiz-block" id="quiz">
+
+    <div class="quiz-block" id="quiz-block">
       <b>Mini-Quiz:</b><br>
-      <span id="quiz-q">What is an example of art in science?</span>
-      <form onsubmit="checkQuiz(event)">
-        <input type="radio" name="quiz" value="correct" id="a1"><label for="a1">DNA origami models</label><br>
-        <input type="radio" name="quiz" value="wrong" id="a2"><label for="a2">Just reading a textbook</label><br>
-        <input type="radio" name="quiz" value="wrong" id="a3"><label for="a3">Repeating old experiments</label><br>
-        <button type="submit" style="margin-top:.6em;">Submit</button>
+      <div id="quiz-question" style="margin-top: 0.5em; font-style: italic;"></div>
+      <form id="quiz-form" style="margin-top: 0.5em;">
+        <!-- Radio buttons will be inserted here dynamically -->
       </form>
       <div id="quiz-answer" style="margin-top:0.6em; color:#2c551b; font-weight:bold;"></div>
+      <button id="next-quiz" type="button" style="margin-top:0.8em; background:var(--brown); color: var(--tan); border:none; padding:0.5em 1em; cursor:pointer; border-radius:6px;">Next Question</button>
     </div>
   </section>
-  <section id="faq" class="faq">
-    <h2>Frequently Asked Questions</h2>
-    <div class="faq-item">
-      <div class="faq-q" onclick="toggleFaq(this)">What is SciAr's main goal?</div>
-      <div class="faq-a">To inspire scientific creativity and support science learners by merging rigorous science with artistic innovation.</div>
-    </div>
-    <div class="faq-item">
-      <div class="faq-q" onclick="toggleFaq(this)">Who can join the courses?</div>
-      <div class="faq-a">High school students, university students, educators, and anyone interested in science-as-art.</div>
-    </div>
-    <div class="faq-item">
-      <div class="faq-q" onclick="toggleFaq(this)">Are all resources free?</div>
-      <div class="faq-a">All linked courses and materials are from open educational sources and are completely free.</div>
-    </div>
-    <div class="faq-item">
-      <div class="faq-q" onclick="toggleFaq(this)">How can I contact SciAr quickly?</div>
-      <div class="faq-a">Use our email, WhatsApp link, or the contact form below. We respond within 24 hours.</div>
-    </div>
-  </section>
-  <section id="resources">
-    <h2>Curated Resource Library</h2>
+
+  <section id="tuitions">
+    <h2>Tuitions - Enroll Now</h2>
+    <h3>Tertiary Level Courses</h3>
+    <p>Enroll in the following courses:</p>
     <ul>
-      <li><a href="https://www.openscience.fr/Art-and-Science?lang=en" target="_blank">Art and Science Journal – Open Access</a></li>
-      <li><a href="https://academic.oup.com/josaa" target="_blank">Journal of the Optical Society of America A</a></li>
-      <li><a href="https://www.esa.int/kids/en/learn/Our_Universe" target="_blank">ESA Kids Universe Learning</a></li>
-      <li><a href="https://creativecommons.org/about/program-areas/education-oer/" target="_blank">Creative Commons OER</a></li>
-      <li><a href="https://www.labxchange.org/library/pathway/lx-pathway:4c4420ee-f1ad-4ec7-9fb6-4867d3e42dec" target="_blank">LabXchange (Harvard) – Interactive Biology</a></li>
-      <li><a href="https://astrobiology.nasa.gov/resources/" target="_blank">NASA Astrobiology Resources</a></li>
-      <li><a href="https://www.youtube.com/channel/UC3yA8nDwraeOfnYfBWun83g" target="_blank">Kurzgesagt – Science YouTube</a></li>
+      <li>BIO 111 - Biomolecules and Cells</li>
+      <li>PHY 101 - Physics Fundamentals</li>
+      <li>MSM 111 - Mathematical Methods</li>
+      <li>CHE 111 - Chemistry Principles</li>
+      <li>Microeconomics</li>
+      <li>Philosophy</li>
+      <li>Business Math</li>
+      <li>Soil Science</li>
     </ul>
-  </section>
-  <section id="gallery" class="gallery">
-    <h2>Gallery & Showcase</h2>
-    <p>See sample images where science meets art (for your future projects):</p>
-    <img src="https://images.unsplash.com/photo-1451187580459-43490279c0fa?auto=format&fit=crop&w=400&q=80" alt="Microscope with artistic background" />
-    <img src="https://images.unsplash.com/photo-1506744038136-46273834b3fb?auto=format&fit=crop&w=400&q=80" alt="Molecule visualization as art"/>
-    <img src="https://images.unsplash.com/photo-1464983953574-0892a716854b?auto=format&fit=crop&w=400&q=80" alt="Science artwork"/>
-  </section>
-  <section id="contact">
-    <h2>Contact Us</h2>
-    <div class="contact-icons">
-      <a href="mailto:sciar2023@gmail.com" title="Email"><b>Email</b></a>
-      <a href="https://wa.me/260772523063" target="_blank" title="Message on WhatsApp"><b>WhatsApp</b></a>
-    </div>
-    <form method="POST" action="https://formspree.io/f/mfb6066">
-      <label for="name">Name:</label>
-      <input type="text" id="name" name="name" autocomplete="name" required />
-      <label for="email-c">Email:</label>
-      <input type="email" id="email-c" name="email" autocomplete="email" required />
-      <label for="message">Message:</label>
-      <textarea id="message" name="message" required></textarea>
-      <button type="submit">Send</button>
+
+    <form id="tertiary-form" onsubmit="sendWhatsAppMessage(event, 'Tertiary')">
+      <label for="tertiary-name">Name:</label>
+      <input type="text" id="tertiary-name" name="name" required />
+      <label for="tertiary-email">Email:</label>
+      <input type="email" id="tertiary-email" name="email" required />
+      <label for="tertiary-course">Select Course:</label>
+      <select id="tertiary-course" name="course" required>
+        <option value="" disabled selected>--Choose a course--</option>
+        <option value="BIO 111 - Biomolecules and Cells">BIO 111 - Biomolecules and Cells</option>
+        <option value="PHY 101 - Physics Fundamentals">PHY 101 - Physics Fundamentals</option>
+        <option value="MSM 111 - Mathematical Methods">MSM 111 - Mathematical Methods</option>
+        <option value="CHE 111 - Chemistry Principles">CHE 111 - Chemistry Principles</option>
+        <option value="Microeconomics">Microeconomics</option>
+        <option value="Philosophy">Philosophy</option>
+        <option value="Business Math">Business Math</option>
+        <option value="Soil Science">Soil Science</option>
+      </select>
+      <button type="submit">Enroll</button>
     </form>
-    <p><b>WhatsApp:</b> <a href="https://wa.me/260772513063" target="_blank">+260 772 513 063</a><br>
-    <b>General email:</b> sciar2023@gmail.com</p>
-    <p>Submissions go to: <b>mfb6066@gmail.com</b></p>
+
+    <hr/>
+
+    <h3>Secondary Level Courses (Zambian Curriculum)</h3>
+    <p>Offering English and all sciences as per the new Zambian curriculum.</p>
+
+    <form id="secondary-form" onsubmit="sendWhatsAppMessage(event, 'Secondary')">
+      <label for="secondary-name">Name:</label>
+      <input type="text" id="secondary-name" name="name" required />
+      <label for="secondary-email">Email:</label>
+      <input type="email" id="secondary-email" name="email" required />
+      <label for="secondary-subject">Select Subject:</label>
+      <select id="secondary-subject" name="course" required>
+        <option value="" disabled selected>--Choose a subject--</option>
+        <option value="English">English</option>
+        <option value="Biology">Biology</option>
+        <option value="Chemistry">Chemistry</option>
+        <option value="Physics">Physics</option>
+        <option value="Mathematics">Mathematics</option>
+        <option value="Agricultural Science">Agricultural Science</option>
+      </select>
+      <button type="submit">Enroll</button>
+    </form>
   </section>
+
+  <section id="tuitions-materials">
+    <h2>Course Materials & Resources</h2>
+
+    <h3>Tertiary Materials</h3>
+
+    <button class="collapsible">Serway College Physics (PDF & Online Resources)</button>
+    <div class="content">
+      <p>Comprehensive physics textbook by Serway, available online and as PDF:</p>
+      <ul>
+        <li><a href="https://fizikamentor.files.wordpress.com/2018/04/college-physics-serway-faughn.pdf" target="_blank" rel="noopener">Serway College Physics Full PDF</a></li>
+        <li><a href="https://openstax.org/details/books/college-physics" target="_blank" rel="noopener">OpenStax College Physics (Free textbook + online)</a></li>
+        <li><a href="https://ocw.mit.edu/courses/physics/" target="_blank" rel="noopener">MIT OCW Physics (Open course materials)</a></li>
+        <li><a href="https://www.khanacademy.org/science/physics" target="_blank" rel="noopener">Khan Academy Physics</a></li>
+      </ul>
+    </div>
+
+    <button class="collapsible">OpenStax Biology</button>
+    <div class="content">
+      <p>Free comprehensive biology textbook and resources:</p>
+      <ul>
+        <li><a href="https://openstax.org/details/books/biology" target="_blank" rel="noopener">OpenStax Biology Textbook (online and PDF)</a></li>
+      </ul>
+    </div>
+
+    <button class="collapsible">OpenStax Chemistry</button>
+    <div class="content">
+      <p>Accessible chemistry textbook and learning materials:</p>
+      <ul>
+        <li><a href="https://openstax.org/details/books/chemistry-2e" target="_blank" rel="noopener">OpenStax Chemistry 2e (Free textbook + online)</a></li>
+      </ul>
+    </div>
+
+    <button class="collapsible">Mathematics Texts</button>
+    <div class="content">
+      <p>Excellent freely available mathematics textbooks and lectures:</p>
+      <ul>
+        <li><a href="https://openstax.org/details/books/precalculus" target="_blank" rel="noopener">OpenStax Precalculus</a></li>
+        <li><a href="https://ocw.mit.edu/courses/mathematics/" target="_blank" rel="noopener">MIT OCW Mathematics (Various courses)</a></li>
+        <li><a href="https://people.maths.ox.ac.uk/gordon/mathsresources.html" target="_blank" rel="noopener">Oxford Mathematics Free Resources</a></li>
+      </ul>
+    </div>
+
+    <button class="collapsible">Computer Science</button>
+    <div class="content">
+      <p>Leading open courses and materials for computer science:</p>
+      <ul>
+        <li><a href="https://cs50.harvard.edu/x/2023/" target="_blank" rel="noopener">Harvard CS50 Introduction to Computer Science</a></li>
+        <li><a href="https://ocw.mit.edu/courses/electrical-engineering-and-computer-science/" target="_blank" rel="noopener">MIT OCW EECS Courses</a></li>
+        <li><a href="https://www.khanacademy.org/computing/computer-science" target="_blank" rel="noopener">Khan Academy Computer Science</a></li>
+      </ul>
+    </div>
+
+    <h3>Secondary Level Materials (Zambian Curriculum)</h3>
+    <p>Tailored English and science materials aligned with the Zambian secondary curriculum:</p>
+    <button class="collapsible">Biology - Zambian Curriculum</button>
+    <div class="content">
+      <ul>
+        <li><a href="https://openstax.org/details/books/biology" target="_blank" rel="noopener">OpenStax Biology (for fundamentals)</a></li>
+        <!-- Add more localized content or PDF links as available -->
+      </ul>
+    </div>
+    <button class="collapsible">Chemistry - Zambian Curriculum</button>
+    <div class="content">
+      <ul>
+        <li><a href="https://openstax.org/details/books/chemistry-2e" target="_blank" rel="noopener">OpenStax Chemistry 2e</a></li>
+      </ul>
+    </div>
+    <button class="collapsible">Physics - Zambian Curriculum</button>
+    <div class="content">
+      <ul>
+        <li><a href="https://openstax.org/details/books/college-physics" target="_blank" rel="noopener">OpenStax College Physics</a></li>
+      </ul>
+    </div>
+    <button class="collapsible">Mathematics - Zambian Curriculum</button>
+    <div class="content">
+      <ul>
+        <li><a href="https://openstax.org/details/books/precalculus" target="_blank" rel="noopener">OpenStax Precalculus</a></li>
+      </ul>
+    </div>
+  </section>
+
   <footer>
-    &copy; 2025 SciAr Academic Consultancy. All rights reserved.<br/>
-    Designed for the intersection of knowledge and creativity.
+    &copy; 2025 SciAr Academic Consultancy. All rights reserved.
   </footer>
+
   <script>
-    // Progress bar
-    window.onscroll = function(){ var d=document,dh=d.documentElement.scrollHeight,wh=window.innerHeight;document.getElementById("progressbar").style.width=(window.pageYOffset/(dh-wh))*100+"%";}
-    // Quote rotator
-    var quotes = [
-      '"Art and science have their meeting point in method." – Edward G. Bulwer-Lytton',
-      '"Science is the poetry of reality." – Richard Dawkins',
-      '"The greatest scientists are always artists as well." – Albert Einstein',
-      '"In every work of art, the spirit of the age and of science are reflected." – Ludwig van Beethoven'
-    ];
-    document.getElementById("quote").innerText = quotes[Math.floor(Math.random()*quotes.length)];
-    // Science as art facts
-    var facts = [
-      'Did you know? The Fibonacci sequence appears in both mathematics and the arrangement of sunflower seeds.',
-      'Did you know? Jellyfish and fireflies emit light due to natural bioluminescence—a popular study in science and art.',
-      'Did you know? Ancient cave art used mineral pigments, linking chemistry to artistic expression.',
-      'Did you know? Sound waves inspire both music composition and advanced medical imaging.'
-    ];
-    document.getElementById("fact").innerText = facts[Math.floor(Math.random()*facts.length)];
-    // Animated counters
-    function animateCounter(id, target){let i=0,intv=setInterval(function(){if(i>=target){clearInterval(intv);}else{document.getElementById(id).innerText=document.getElementById(id).innerText.replace(/\d+/,++i);}},70);}
-    animateCounter('counter1',42); animateCounter('counter2',12);
-    // Tab navigation
-    function openTab(evt, tabName){
-      var tabs = document.getElementsByClassName('tab'), contents = document.getElementsByClassName('tab-content');
-      for(var i=0;i<tabs.length;i++) tabs[i].classList.remove('active');
-      for(var i=0;i<contents.length;i++) contents[i].classList.remove('active');
+    // Tabs functionality
+    function openTab(evt, tabId) {
+      const tabContents = document.querySelectorAll('.tab-content');
+      const tabs = document.querySelectorAll('.tab');
+
+      tabContents.forEach(el => el.classList.remove('active'));
+      tabs.forEach(el => el.classList.remove('active'));
+
+      document.getElementById(tabId).classList.add('active');
       evt.currentTarget.classList.add('active');
-      document.getElementById(tabName).classList.add('active');
     }
-    // FAQ Toggle
-    function toggleFaq(el){ var ans = el.nextElementSibling; ans.style.display = (ans.style.display==='block')?'none':'block'; }
-    // Mini-quiz
-    function checkQuiz(e){
-      e.preventDefault();
-      let ans = document.querySelector('input[name=quiz]:checked');
-      if(ans){ document.getElementById("quiz-answer").innerText = (ans.value==="correct" ? "Correct! Science and art beautifully combine through things like DNA origami." : "Not quite! Try again."); }
-      else { document.getElementById("quiz-answer").innerText = "Choose an answer!"; }
-    }
-  </script>
-</body>
-</html>
+
+    // WhatsApp enrollment submission
+    function sendWhatsAppMessage(event, level) {
+      event.preventDefault();
+      const form = event.target;
+      const name = form.querySelector('input[name="name"]').value.trim();
+      const email = form.querySelector('input[name="email"]').value.trim();
+      const course = form.querySelector('select[name="course"]').value;
+
+      if (!name || !email || !course) {
+        alert('Please fill all the fields before submitting.');
+        return;
+      }
+
+      const message = `Hello, I w
