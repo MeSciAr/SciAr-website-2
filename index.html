@@ -419,4 +419,160 @@
         return;
       }
 
-      const message = `Hello, I w
+      message = `Hello, I would like to enroll in a ${level} level course.\n\nName: ${name}\nEmail: ${email}\nCourse: ${course}`;
+      const whatsappURL = `https://wa.me/260772513063?text=${encodeURIComponent(message)}`;
+      window.open(whatsappURL, '_blank');
+    }
+
+    // Collapsible toggling for materials section
+    document.addEventListener('DOMContentLoaded', () => {
+      document.querySelectorAll('.collapsible').forEach(button => {
+        button.addEventListener('click', () => {
+          button.classList.toggle('active');
+          const content = button.nextElementSibling;
+          if (content.style.maxHeight) {
+            content.style.maxHeight = null;
+          } else {
+            content.style.maxHeight = content.scrollHeight + "px";
+          }
+        });
+      });
+
+      // Quiz data - questions, options, and correct option index
+      const quizzes = [
+        {
+          question: "What is an example of art in science?",
+          options: ["DNA origami models", "Just reading a textbook", "Repeating old experiments"],
+          answerIndex: 0
+        },
+        {
+          question: "Which scientist is famous for the laws of motion?",
+          options: ["Isaac Newton", "Albert Einstein", "Marie Curie"],
+          answerIndex: 0
+        },
+        {
+          question: "What kind of energy is stored in a compressed spring?",
+          options: ["Kinetic energy", "Potential energy", "Thermal energy"],
+          answerIndex: 1
+        },
+        {
+          question: "Which mathematical sequence appears in nature and art?",
+          options: ["Fibonacci sequence", "Prime numbers", "Pascal’s triangle"],
+          answerIndex: 0
+        },
+        {
+          question: "What is the basic unit of life?",
+          options: ["Atom", "Cell", "Molecule"],
+          answerIndex: 1
+        }
+      ];
+
+      let currentQuizIndex = 0;
+
+      // Elements
+      const quizQuestionEl = document.getElementById('quiz-question');
+      const quizForm = document.getElementById('quiz-form');
+      const quizAnswerEl = document.getElementById('quiz-answer');
+      const nextQuizBtn = document.getElementById('next-quiz');
+
+      function loadQuiz(index) {
+        quizAnswerEl.textContent = '';
+        const quiz = quizzes[index];
+        quizQuestionEl.textContent = quiz.question;
+        quizForm.innerHTML = '';
+        quiz.options.forEach((option, i) => {
+          const radioId = `quiz-option-${i}`;
+          const radio = document.createElement('input');
+          radio.type = 'radio';
+          radio.id = radioId;
+          radio.name = 'quiz';
+          radio.value = i;
+          radio.style.marginRight = '0.6em';
+
+          const label = document.createElement('label');
+          label.htmlFor = radioId;
+          label.textContent = option;
+
+          // Wrap each option on a new line
+          const div = document.createElement('div');
+          div.appendChild(radio);
+          div.appendChild(label);
+
+          quizForm.appendChild(div);
+        });
+      }
+
+      function checkQuiz(event) {
+        event.preventDefault();
+        const selected = quizForm.querySelector('input[name="quiz"]:checked');
+        if (!selected) {
+          quizAnswerEl.textContent = "Please select an answer.";
+          return;
+        }
+        const selectedIndex = parseInt(selected.value, 10);
+        const correctIndex = quizzes[currentQuizIndex].answerIndex;
+        quizAnswerEl.textContent = (selectedIndex === correctIndex) ? "Correct! 🎉" : "Try again!";
+      }
+
+      // Initial load
+      loadQuiz(currentQuizIndex);
+
+      // Handle form submit
+      quizForm.addEventListener('submit', checkQuiz);
+
+      // Handler for next question
+      nextQuizBtn.addEventListener('click', () => {
+        currentQuizIndex = (currentQuizIndex + 1) % quizzes.length;
+        loadQuiz(currentQuizIndex);
+      });
+
+      // Optionally show first quiz form submit button too
+      const submitBtn = document.createElement('button');
+      submitBtn.type = 'submit';
+      submitBtn.textContent = 'Submit';
+      submitBtn.style.marginTop = '0.6em';
+      quizForm.appendChild(submitBtn);
+
+
+      // Progress bar on scroll (optional)
+      window.addEventListener('scroll', () => {
+        const scrollTotal = document.documentElement.scrollHeight - document.documentElement.clientHeight;
+        const progress = (window.scrollY / scrollTotal) * 100;
+        document.getElementById('progressbar').style.width = progress + '%';
+      });
+    });
+  </script>
+</body>
+</html>
+<section id="tuitions-materials">
+  <h2>Course Materials & Resources</h2>
+
+  <h3>Past Exam Papers</h3>
+
+  <!-- Secondary Level Past Papers -->
+  <button class="collapsible">Secondary Level Past Papers (Zambian Curriculum)</button>
+  <div class="content">
+    <p>Past examination papers for the Zambian secondary curriculum, from reliable sources:</p>
+    <ul>
+      <li><a href="https://zedpastpapers.com/downloads/grade12/index.html" target="_blank" rel="noopener">ZEDPastPapers Grade 12 (Senior Secondary)</a></li>
+      <li><a href="https://www.exams-council.org.zm" target="_blank" rel="noopener">Examinations Council of Zambia (ECZ) Official</a></li>
+      <li><a href="https://eczstudytool.com/grade12-past-papers" target="_blank" rel="noopener">ECZ Grade 12 Past Papers</a></li>
+      <li><a href="https://eskulu.com/senior-secondary/grade-12-past-papers/" target="_blank" rel="noopener">Eskulu Grade 12 Past Papers</a></li>
+    </ul>
+  </div>
+
+  <!-- Tertiary Level Past Papers -->
+  <button class="collapsible">Tertiary Level Past Papers</button>
+  <div class="content">
+    <p>Access past examination papers from some Zambian universities and open educational repositories:</p>
+    <ul>
+      <li><a href="https://dspace.unza.zm/handle/123456789/2963" target="_blank" rel="noopener">University of Zambia Past Papers Collection (DSpace)</a></li>
+      <li><a href="https://repository.up.ac.za/" target="_blank" rel="noopener">University of Pretoria Repository (Open access theses and papers)</a></li>
+      <li><a href="https://scholar.google.com" target="_blank" rel="noopener">Google Scholar (Search for Open Access Tertiary Past Papers)</a></li>
+      <li><a href="https://www.oercommons.org/" target="_blank" rel="noopener">OER Commons (Open Educational Resources including past papers)</a></li>
+    </ul>
+    <p>Note: For specific universities, check their official libraries or repositories for past exam papers; availability varies.</p>
+  </div>
+</section>
+
+  
